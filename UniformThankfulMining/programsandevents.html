@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs and Events | Helping Kids Nonprofit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            flex: 1;
+            width: 100%; /* Full width */
+            max-width: 1200px; /* Optional: Limit max width */
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allows scrolling if content is too tall */
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        h2 {
+            color: #0056b3;
+            margin-top: 20px;
+        }
+        .event {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e8f0fe;
+        }
+        p {
+            color: #333;
+            line-height: 1.5;
+        }
+        .date {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #0056b3;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #004494;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%; /* Full width of modal */
+            max-width: 600px; 
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-images {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .modal-images img {
+            width: 48%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="javascript:history.back()" class="back-button">Back</a>
+    
+    <h1>Programs and Events</h1>
+
+    <h2>Upcoming Events</h2>
+    
+    <div class="event">
+        <h3>Annual Fundraising Gala</h3>
+        <p class="date">Date: March 15, 2024</p>
+        <p>Join us for our annual gala to raise funds for our programs. Enjoy a night of dinner, entertainment, and inspiring stories. Tickets will be available soon!</p>
+        <span class="read-more" onclick="openModal('galaModal')">Read More</span>
+    </div>
+
+    <div class="event">
+        <h3>Community Clean-Up Day</h3>
+        <p class="date">Date: April 10, 2024</p>
+        <p>Help us beautify our community! Join us for a day of cleaning up local parks and neighborhoods. Supplies will be provided.</p>
+        <span class="read-more" onclick="openModal('cleanupModal')">Read More</span>
+    </div>
+
+    <div class="event">
+        <h3>Back-to-School Supply Drive</h3>
+        <p class="date">Date: August 1-15, 2024</p>
+        <p>We will be collecting school supplies for children in need. Drop-off locations will be announced soon!</p>
+        <span class="read-more" onclick="openModal('supplyDriveModal')">Read More</span>
+    </div>
+
+    <h2>Past Events</h2>
+    
+    <div class="event">
+        <h3>Summer Fun Day</h3>
+        <p class="date">Date: July 20, 2023</p>
+        <p>This successful event brought together children from local shelters for a day of games, food, and fun at the park. Thanks to all who participated!</p>
+        <span class="read-more" onclick="openModal('summerFunModal')">Read More</span>
+    </div>
+
+    <div class="event">
+        <h3>Holiday Gift Drive</h3>
+        <p class="date">Date: December 10, 2023</p>
+        <p>Our Holiday Gift Drive collected toys and gifts for over 200 children in need. Thank you to everyone who donated and helped spread joy!</p>
+        <span class="read-more" onclick="openModal('holidayGiftModal')">Read More</span>
+    </div>
+
+    <div class="event">
+        <h3>Spring Book Fair</h3>
+        <p class="date">Date: April 5-6, 2023</p>
+        <p>We hosted a book fair to promote literacy and collected over 500 books for local orphanages. Special thanks to our volunteers!</p>
+        <span class="read-more" onclick="openModal('bookFairModal')">Read More</span>
+    </div>
+
+    <div class="footer">
+        <p>Thank you for your support! Together, we can make a difference in the lives of children in need.</p>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="galaModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('galaModal')">&times;</span>
+        <h2>Annual Fundraising Gala Details</h2>
+        <p>Join us on March 15, 2024, for a night filled with dinner, entertainment, and inspiring stories from children we've helped. Your participation helps fund our programs to support kids in need.</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Gala Image 1">
+            <img src="https://via.placeholder.com/250" alt="Gala Image 2">
+        </div>
+    </div>
+</div>
+
+<div id="cleanupModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('cleanupModal')">&times;</span>
+        <h2>Community Clean-Up Day Details</h2>
+        <p>Join us on April 10, 2024, to help clean local parks and neighborhoods. Together, we can make our community a better place. Supplies will be provided!</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Clean-Up Day Image 1">
+            <img src="https://via.placeholder.com/250" alt="Clean-Up Day Image 2">
+        </div>
+    </div>
+</div>
+
+<div id="supplyDriveModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('supplyDriveModal')">&times;</span>
+        <h2>Back-to-School Supply Drive Details</h2>
+        <p>From August 1-15, 2024, we will be collecting school supplies for children in need. Drop-off locations will be shared soon. Your contributions help kids start the school year prepared!</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Supply Drive Image 1">
+            <img src="https://via.placeholder.com/250" alt="Supply Drive Image 2">
+        </div>
+    </div>
+</div>
+
+<div id="summerFunModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('summerFunModal')">&times;</span>
+        <h2>Summer Fun Day Details</h2>
+        <p>On July 20, 2023, we brought joy to children from local shelters with games and food at the park. It was a day filled with laughter and fun. Thank you for your support!</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Summer Fun Day Image 1">
+            <img src="https://via.placeholder.com/250" alt="Summer Fun Day Image 2">
+        </div>
+    </div>
+</div>
+
+<div id="holidayGiftModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('holidayGiftModal')">&times;</span>
+        <h2>Holiday Gift Drive Details</h2>
+        <p>On December 10, 2023, our drive collected toys and gifts for over 200 children. Thank you to all who donated and made the holidays brighter!</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Holiday Gift Drive Image 1">
+            <img src="https://via.placeholder.com/250" alt="Holiday Gift Drive Image 2">
+        </div>
+    </div>
+</div>
+
+<div id="bookFairModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('bookFairModal')">&times;</span>
+        <h2>Spring Book Fair Details</h2>
+        <p>On April 5-6, 2023, we hosted a book fair promoting literacy and collected over 500 books for local orphanages. Thanks to our amazing volunteers for making this possible!</p>
+        <div class="modal-images">
+            <img src="https://via.placeholder.com/250" alt="Book Fair Image 1">
+            <img src="https://via.placeholder.com/250" alt="Book Fair Image 2">
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Close modal when clicking outside of the modal content
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            closeModal(event.target.id);
+        }
+    }
+</script>
+
+</body>
+</html>
+

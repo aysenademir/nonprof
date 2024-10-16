@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            margin: 0;
+            padding: 20px;
+            position: relative; /* Set relative positioning for the body */
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative; /* Keep the container relative for absolute positioning */
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ccc;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #bbb;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #333;
+        }
+        .donation-type {
+            margin: 20px 0;
+        }
+        .amount-options {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .amount-button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            flex: 1 1 calc(30% - 10px);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .amount-button:hover {
+            transform: scale(1.1);
+        }
+        .total {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-align: center;
+            color: #0056b3;
+        }
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input[type="number"]:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+            outline: none;
+        }
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #004494;
+        }
+        .warning {
+            display: none;
+            background-color: #ffcccc;
+            color: #d8000c;
+            border: 1px solid #d8000c;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Back Button at the top left corner -->
+    <button class="back-button" onclick="window.history.back()">Back</button>
+    
+    <h1>Support Our Cause</h1>
+    <p>Your generous donation helps us make a difference in the community.</p>
+    
+    <form id="donationForm" action="checkout.html" method="POST">
+        <div class="donation-type">
+            <label for="one-time">
+                <input type="radio" id="one-time" name="donation_type" value="one-time" checked onclick="toggleWarning(false)">
+                One-Time Donation
+            </label>
+            <label for="subscription">
+                <input type="radio" id="subscription" name="donation_type" value="subscription" onclick="toggleWarning(true)">
+                Monthly Subscription
+            </label>
+        </div>
+
+        <div class="warning" id="subscriptionWarning">
+            **Please note:** Monthly subscriptions will be charged automatically every month.
+        </div>
+
+        <label>Select Donation Amount:</label>
+        <div class="amount-options">
+            <button type="button" class="amount-button" onclick="setAmount(10)">$10</button>
+            <button type="button" class="amount-button" onclick="setAmount(25)">$25</button>
+            <button type="button" class="amount-button" onclick="setAmount(50)">$50</button>
+            <button type="button" class="amount-button" onclick="setAmount(100)">$100</button>
+            <button type="button" class="amount-button" onclick="setAmount(250)">$250</button>
+            <button type="button" class="amount-button" onclick="setAmount(500)">$500</button>
+            <button type="button" class="amount-button" onclick="setAmount(1000)">$1000</button>
+            <button type="button" class="amount-button" onclick="setAmount(2500)">$2500</button>
+            <button type="button" class="amount-button" onclick="setAmount(5000)">$5000</button>
+            <button type="button" class="amount-button" onclick="setAmount(10000)">$10000</button>
+            <label>
+                <button type="button" class="amount-button" onclick="setCustomAmount()">
+                    Custom Amount: 
+                </button>
+                <input type="number" name="custom_amount" min="1" style="width: 80px; display:inline-block;" oninput="updateTotal()">
+            </label>
+        </div>
+
+        <div class="total">
+            Total Donation Amount: $<span id="totalAmount">0</span>
+        </div>
+
+        <input type="hidden" id="amount" name="amount" value="">
+        <input type="submit" value="Donate Now">
+    </form>
+</div>
+
+<div class="footer">
+    <p>Thank you for your support!</p>
+</div>
+
+<script>
+    function setAmount(value) {
+        document.getElementById('amount').value = value;
+        document.getElementById('totalAmount').textContent = value;
+        localStorage.setItem('donationAmount', value);
+        document.querySelector('input[name="custom_amount"]').value = '';
+    }
+
+    function setCustomAmount() {
+        const customAmount = document.querySelector('input[name="custom_amount"]').value;
+        document.getElementById('amount').value = customAmount;
+        document.getElementById('totalAmount').textContent = customAmount;
+        localStorage.setItem('donationAmount', customAmount);
+    }
+
+    function updateTotal() {
+        const customAmount = document.querySelector('input[name="custom_amount"]').value;
+        document.getElementById('totalAmount').textContent = customAmount;
+        document.getElementById('amount').value = customAmount;
+        localStorage.setItem('donationAmount', customAmount);
+    }
+
+    function toggleWarning(isSubscription) {
+        const warning = document.getElementById('subscriptionWarning');
+        warning.style.display = isSubscription ? 'block' : 'none';
+    }
+
+    document.getElementById('donationForm').addEventListener('submit', function() {
+        const amount = document.getElementById('amount').value;
+        const isSubscription = document.querySelector('input[name="donation_type"]:checked').value === 'subscription';
+        localStorage.setItem('donationAmount', amount);
+        localStorage.setItem('donation_type', isSubscription ? 'subscription' : 'one-time');
+    });
+</script>
+
+</body>
+</html>

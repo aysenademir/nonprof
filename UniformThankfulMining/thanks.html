@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Your Donation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 1000px; /* Reduced max width */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 20px auto; /* Center the container */
+        }
+        h1, h2 {
+            color: #0056b3;
+            text-align: center; /* Center the headings */
+        }
+        .donation-summary {
+            background-color: #f1f8ff;
+            border: 1px solid #b3d4ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .home-button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 0 auto; /* Center the button */
+        }
+        .home-button:hover {
+            background-color: #004494;
+        }
+        .info-boxes {
+            margin-top: 30px;
+        }
+        .info-box {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 5px auto; /* Reduced margin to bring boxes closer together */
+            width: 90%; /* Set a smaller width for info boxes */
+            max-width: 300px; /* Set a max width for info boxes */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .info-boxes .row {
+            justify-content: center; /* Center the info boxes in the row */
+        }
+        .card {
+            height: 200px; /* Set a fixed height for the cards */
+            width: 300px; /* Set a fixed height for the cards */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Thank You for Your Donation!</h1>
+    <h2>Your Impact Matters</h2>
+    <p>Your generosity is greatly appreciated and will help us make a real difference in our community.</p>
+    
+    <div class="donation-summary">
+        <h3>Donation Summary:</h3>
+        <p><strong>Amount Donated:</strong> $<span id="donationAmount">0</span></p>
+        <p><strong>Name:</strong> <span id="donorName"></span></p>
+        <p><strong>Email:</strong> <span id="donorEmail"></span></p>
+    </div>
+    
+    <p>We appreciate your support and commitment to our cause. Together, we can achieve great things!</p>
+    
+    <button class="home-button" onclick="window.location.href='index.html'">Return to Home</button>
+</div>
+
+<h2 class="mt-5">Our Past Accomplishments</h2> 
+<section class="services-section mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="image1.jpg" class="card-img-top" alt="Accomplishment 1">
+                <div class="card-body">
+                    <h5 class="card-title">Accomplishment Title 1</h5>
+                    <p class="card-text">Brief description of the accomplishment.</p>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#accomplishment1Modal">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="image2.jpg" class="card-img-top" alt="Accomplishment 2">
+                <div class="card-body">
+                    <h5 class="card-title">Accomplishment Title 2</h5>
+                    <p class="card-text">Brief description of the accomplishment.</p>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#accomplishment2Modal">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="image3.jpg" class="card-img-top" alt="Accomplishment 3">
+                <div class="card-body">
+                    <h5 class="card-title">Accomplishment Title 3</h5>
+                    <p class="card-text">Brief description of the accomplishment.</p>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#accomplishment3Modal">Read More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modals for Accomplishment Details -->
+<div class="modal fade" id="accomplishment1Modal" tabindex="-1" role="dialog" aria-labelledby="accomplishment1ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accomplishment1ModalLabel">Accomplishment Title 1</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Detailed information about Accomplishment 1. This can include statistics, stories of impact, and any other relevant details that highlight the success of this accomplishment.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="accomplishment2Modal" tabindex="-1" role="dialog" aria-labelledby="accomplishment2ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accomplishment2ModalLabel">Accomplishment Title 2</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Detailed information about Accomplishment 2. This can include statistics, stories of impact, and any other relevant details that highlight the success of this accomplishment.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="accomplishment3Modal" tabindex="-1" role="dialog" aria-labelledby="accomplishment3ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="accomplishment3ModalLabel">Accomplishment Title 3</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Detailed information about Accomplishment 3. This can include statistics, stories of impact, and any other relevant details that highlight the success of this accomplishment.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="info-boxes text-center">
+    <h2>Get Involved</h2>
+    <div class="row">
+        <div class="col-md-4 d-flex justify-content-center"> <!-- Center the column -->
+            <div class="info-box">
+                <h3>Our Mission</h3>
+                <p>We strive to create positive change through our various community programs and initiatives. Every donation helps us achieve our goals.</p>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center"> <!-- Center the column -->
+            <div class="info-box">
+                <h3>Get Involved</h3>
+                <p>Join us in our efforts! Learn how you can volunteer or participate in upcoming events to make an even greater impact.</p>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center"> <!-- Center the column -->
+            <div class="info-box">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter to receive updates on our programs, events, and how your contributions are making a difference.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center mt-5">
+    <div class="container">
+        <p>&copy; 2023 Your Organization. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Populate the donation summary with data from localStorage
+    const donationAmount = localStorage.getItem('donationAmount') || '0';
+    const donorName = localStorage.getItem('donorName') || 'Anonymous';
+    const donorEmail = localStorage.getItem('donorEmail') || 'Not Provided';
+
+    document.getElementById('donationAmount').textContent = donationAmount;
+    document.getElementById('donorName').textContent = donorName;
+    document.getElementById('donorEmail').textContent = donorEmail;
+</script>
+
+</body>
+</html>
