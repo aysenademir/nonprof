@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="A colorful community website with smooth transitions and friendly vibes." />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Community Hub home">
+        <span class="logo" aria-hidden="true">🌈</span>
+        <span class="brand-text">Community Hub</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#members">Members</a></li>
+          <li><a href="#join" class="cta">Join</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <h1>
+          A friendly place to connect,
+          <span class="accent">create</span>, and grow.
+        </h1>
+        <p class="lead">Join our colorful community — share projects, learn new skills, and meet awesome people.
+        </p>
+        <div class="actions">
+          <a href="#join" class="btn primary">Become a Member</a>
+          <a href="#about" class="btn ghost">Learn More</a>
+        </div>
+      </div>
+      <div class="gradient-orb orb-1" aria-hidden="true"></div>
+      <div class="gradient-orb orb-2" aria-hidden="true"></div>
+      <div class="gradient-orb orb-3" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container two-col">
+        <div class="text">
+          <h2>About our community</h2>
+          <p>We are a welcoming group of creatives, developers, and learners from around the world. We host workshops, co-working sessions, and showcase nights.
+          </p>
+          <ul class="features">
+            <li>
+              <div class="feature-icon" aria-hidden="true">✨</div>
+              <div>
+                <h3>Inclusive & kind</h3>
+                <p>Everyone is invited to participate and share in a supportive space.</p>
+              </div>
+            </li>
+            <li>
+              <div class="feature-icon" aria-hidden="true">🧠</div>
+              <div>
+                <h3>Learn & grow</h3>
+                <p>Weekly events help you level up your skills and confidence.</p>
+              </div>
+            </li>
+            <li>
+              <div class="feature-icon" aria-hidden="true">🤝</div>
+              <div>
+                <h3>Collaborate</h3>
+                <p>Find teammates, mentors, and friends for your next idea.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card photo-card" aria-hidden="true">
+          <div class="photo-grid">
+            <div class="photo p1"></div>
+            <div class="photo p2"></div>
+            <div class="photo p3"></div>
+            <div class="photo p4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events" class="section alt">
+      <div class="container">
+        <h2>Upcoming events</h2>
+        <div class="cards">
+          <article class="card event">
+            <div class="card-badge">Nov 3</div>
+            <h3>Creative Coding Jam</h3>
+            <p>Bring your favorite tools and jam on generative art with friends.</p>
+            <a class="btn small" href="#join">RSVP</a>
+          </article>
+          <article class="card event">
+            <div class="card-badge">Nov 10</div>
+            <h3>Intro to Web Animation</h3>
+            <p>Learn CSS animations and micro-interactions to level up your UI.</p>
+            <a class="btn small" href="#join">RSVP</a>
+          </article>
+          <article class="card event">
+            <div class="card-badge">Nov 17</div>
+            <h3>Show & Tell Night</h3>
+            <p>Share something you built and get helpful, supportive feedback.</p>
+            <a class="btn small" href="#join">RSVP</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="members" class="section">
+      <div class="container">
+        <h2>Member highlights</h2>
+        <div class="avatar-row">
+          <div class="avatar" title="Alex — Designer" aria-label="Alex — Designer"></div>
+          <div class="avatar" title="Sam — Developer" aria-label="Sam — Developer"></div>
+          <div class="avatar" title="Riley — Artist" aria-label="Riley — Artist"></div>
+          <div class="avatar" title="Jordan — Community" aria-label="Jordan — Community"></div>
+          <div class="avatar" title="Taylor — Mentor" aria-label="Taylor — Mentor"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join" class="section cta-section alt">
+      <div class="container">
+        <h2>Join the community</h2>
+        <p class="lead">Membership is free. Get updates, event invites, and a warm welcome.</p>
+        <form class="join-form" action="#" method="post" onsubmit="event.preventDefault(); this.reset(); this.querySelector('button').textContent='Thanks!';">
+          <label>
+            <span class="sr-only">Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <button type="submit" class="btn primary">Request Invite</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Community Hub</p>
+      <ul class="footer-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#members">Members</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('open');
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
